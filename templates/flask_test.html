@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="1800">
+    <title>天氣預報</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.0/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+
+</head>
+
+<body onload="getTime()">
+    <div class="hero">
+        <div class="hero-body">
+            <div class="columns is-vcentered">
+                <div class="column is-half">
+                    <p class="title is-2">
+                        天氣預報
+                    </p>
+
+                    <p class="subtitle">
+                        資料來源:<a href="https://data.gov.tw/dataset/34827" target="_blank">政府資料開放平台</a><br>
+                    </p>
+                    <p id="date">
+                        {{date}}
+                    </p>
+                    <small class="has-text-bottom" id="date">
+                        更新時間:取得中...
+
+                    </small>
+                    <!-- <p class="mt-2"> <a href="#" class="button is-info is-medium">更新資料</a></p> -->
+
+                    <form action="./weather_forecast" class="form mt-2">
+                        <button class="button is-info is-medium">
+                            更新資料
+                        </button>
+                    </form>
+                </div>
+                <div class="column">
+                    <div class="card  has-text-centered">
+                        <header class="card-header">
+
+                        </header>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <form action="/flask_test" method="POST"></form>
+    <select name="select_countys" id="select_countys">
+        {% for county in countys %}
+        <option value="{{county}}">{{county}}</option>
+        {% endfor %}
+    </select>
+    </form>
+    <input type="button" value="確定" id="county_btn" name="county_btn">
+    <!--表格-->
+    <section>
+
+        {{county}}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>開始時間</th>
+                    <th>結束時間</th>
+                    <th>(早上)天氣描述</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in values[:3] %}
+                <tr>
+                    {% for td in value[:3] %}
+                    <td>{{td}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                    <th>開始時間</th>
+                    <th>結束時間</th>
+                    <th>(晚上)天氣描述</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in values[9:12] %}
+                <tr>
+                    {% for td in value[:] %}
+                    <td>{{td}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                    <th>開始時間</th>
+                    <th>結束時間</th>
+                    <th>最高溫度</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in values[3:6] %}
+                <tr>
+                    {% for td in value[:] %}
+                    <td>{{td}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                    <th>開始時間</th>
+                    <th>結束時間</th>
+                    <th>最低溫度</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in values[6:9] %}
+                <tr>
+                    {% for td in value[:] %}
+                    <td>{{td}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                    <th>開始時間</th>
+                    <th>結束時間</th>
+                    <th>降雨機率</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in values[12:15] %}
+                <tr>
+                    {% for td in value[:] %}
+                    <td>{{td}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </section>
+
+
+
+
+    <!-- <script src=" {{ url_for('static', filename='./js/index.js' ) }}">
+                    </script> -->
+    <script src="{{url_for('static',filename='./js/main.js')}}"></script>
+    <script src="{{url_for('static',filename='./js/weather_forecast.js')}}"></script>
+</body>
+
+</html>
