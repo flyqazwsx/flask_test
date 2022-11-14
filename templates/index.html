@@ -5,11 +5,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.0/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>空氣品質</title>
 </head>
 
-<body>
-    <h1>首頁</h1>
+<body onload="getTime()">
+    <div class="hero is-info is-large">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero is-warning">
+            <div class="hero-head">
+
+
+                <div class=" title ">
+
+                    <p class=" title is-2 has-text-weight-bold">
+                        空氣品質監測站
+                    </p>
+                    <p class=" has-text-weight-bold" id="date"></p>
+
+                    <p class="subtitle has-text-weight-bold is-underlined">
+                        資料來源:<a href="https://data.gov.tw/dataset/40448" target="_blank">政府資料開放平台</a><br>
+                    </p>
+                    <br>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body  ">
+            <div class="container has-text-centered">
+                <ul>
+                    <p class="title is-1 has-text-weight-bold">
+                        空氣品質數據
+                    </p>
+                    <p class=" title ">
+                        <a class="button is-success is-medium is-rounded title is-3 has-text-weight-bold" href="/data"
+                            target="_blank">no2(二氧化氮(ppb))</a>
+                    </p>
+                    <p class="title ">
+                        <a class="button is-success is-medium is-rounded title is-3 has-text-weight-bold" href="/data_2"
+                            target="_blank">pm2.5(細懸浮微粒(μg/m3))</a>
+                    </p>
+                    <p class="title ">
+                        <a class="button is-success is-medium is-rounded title is-3 has-text-weight-bold" href="/data_3"
+                            target="_blank">so2(二氧化硫(ppb))</a>
+                    </p>
+                </ul>
+                <br>
+
+            </div>
+        </div>
+
+        <!-- Hero footer: will stick at the bottom -->
+
+    </div>
+
+    <script src="{{url_for('static',filename='./js/main.js')}}"></script>
 </body>
 
 </html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="1800">
+    <title>so2(二氧化硫(ppb))</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.0/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+
+</head>
+
+<body onload="getTime()">
+    <div class="hero is-small is-warning">
+        <div class="hero-body">
+            <div class="columns is-vcentered">
+                <div class="column is-half">
+                    <p class="title is-2">
+                        空氣品質
+                    </p>
+
+                    <p class="subtitle has-text-weight-bold">
+                        資料來源:<a href="https://data.gov.tw/dataset/40448" target="_blank">政府資料開放平台</a><br>
+                    </p>
+                    <!-- <p>
+                        資料更新時間:{{date}}
+                    </p> -->
+
+
+                    </p>
+                    <p class="has-text-weight-bold" id="date">
+
+                    </p>
+                    <form action="./data_3" class="form mt-2">
+
+                        <p class="has-text-weight-bold">資料更新時間:{{date}}</p>
+                        <button class="button is-info is-medium">
+
+                            更新資料
+                        </button>
+                    </form>
+
+                    <p>
+                        <a class="button is-link is-medium" href="/index" target="_blank">首頁</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="column is-two-four">
+                <div class="box">
+                    <div id="so2" style="width: 100%;height:400px;"></div>
+                </div>
+
+            </div>
+
+
+            <section class="hero is-small is-primary">
+                <div class="hero-body">
+                    <p class="title is-1 has-text-white">
+                        so2(二氧化硫(ppb))
+                    </p>
+                    <p class="subtitle is-4  has-text-justified has-text-weight-bold">
+                        二氧化硫（SO2）为无色、具辛辣及刺激性气味的气体，属中等毒性物质，易溶于水形成亚硫酸，SO2是常见的大气污染物，
+                        SO2是目前大气污染物中数量较大，影响范围较广的一种气态污染物，大气中SO2的来源很广，几乎所有工业企业都可能产生。
+                        它主要来自化石燃料的燃烧过程，以及硫化物矿石的焙烧、冶炼等热过程。
+
+                    </p>
+
+
+                    <br>
+                    <p class="title is-3 has-text-white">
+                        二氧化硫对人体的危害：
+                    </p>
+
+
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （1）二氧化硫对人的呼吸器官和眼膜具有刺激作用，长期吸入对呼吸系统、肝、肾、心脏都有危害。
+                    </p>
+
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （2）二氧化硫在一定浓度下对呼吸道，特别是对上呼吸道有刺激作用，并可影响呼吸功能。此外，二氧化氯对眼结膜也有刺激作用，并可引起炎症，在高浓度下还具有致突变、致癌变作用。
+                    </p>
+
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （3）在大气中易转化形成硫酸雾，空气中的酸雾可被吸入肺部组织，引起肺部炎症，肺水肿，尤其对婴儿影响更大，甚至引起突发性婴儿死亡综合症。
+                    </p>
+
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （4）二氧化硫进入呼吸道后，因其易溶于水，故大部分被阻滞在上呼吸道，在湿润的粘膜上生成具有腐蚀性的亚硫酸 、硫酸和硫酸盐，使刺激作用增强。上呼吸道的平滑肌因有末梢神经感受器
+                        ，遇刺激就会产生窄缩反应，使气管和支气管的管腔缩小，气道阻力增加。上呼吸道对二氧化硫的这种阻留作用，在一定程度上可减轻二氧化硫对肺部的刺激。但进入血液的二氧化硫仍可通过血液循环抵达肺部产生刺激作用。
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （5）人体主要经呼吸道吸收二氧化硫,
+                        引起不同程度的呼吸道及眼粘膜的刺激症状。急性中毒者表现出眼结膜和呼吸道粘膜强烈剌激症状如:流泪、畏光、鼻、咽、喉烧灼感及疼痛、咳嗽、胸闷、胸骨后疼痛、心悸、气短、恶心、呕吐等。
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （6）长期接触低浓度二氧化硫可引起慢性损害, 以慢性鼻炎、咽炎、气管炎、支气管炎、肺气肿、肺间质纤维化等病理改变为常见。轻度中毒者可有眼灼痛、畏光、流泪、流涕、咳嗽, 常为阵发性干咳,
+                        鼻、咽喉部有烧灼样痛、声音嘶哑, 甚至有呼吸短促、胸痛、胸闷。有时还出现消化道症状如恶心、呕吐、上腹痛和消化不良, 以及全身症状如头痛、头昏、失眠、全身无力等。严重中毒很少见,
+                        可于数小时内发生肺水肿, 出现呼吸困难和紫绀, 咳粉红色泡沫样痰。
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （7）较高浓度的SO2可使肺泡上皮脱落、破裂, 引起自发性气胸, 导致纵膈气肿。液体SO2可引起皮肤及眼灼伤, 溅入眼内可立即引起角膜混浊,
+                        浅层细胞坏死或角膜瘢痕。皮肤接触后可呈现灼伤、起泡、肿胀、坏死。
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （8）二氧化硫可被吸收进入血液，对全身产生毒作用，它能破坏酶的活力，从而明显地影响碳水化合物及蛋白质的代谢，对肝脏有一定损害。动物实验证明，二氧化硫慢性中毒后，机体的免疫力受到明显抑制。二氧化硫浓度为10-15ppm，呼吸道纤毛运动和粘膜的分泌功能均受到抑制。浓度达20ppm时，引起咳嗽并刺激眼睛。浓度为100ppm时，支气管和肺部将出现明显的刺激症状，使肺组织受损。浓度达400ppm时可使人产生呼吸困难。
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                        （9）二氧化硫与飘尘一起被吸入，飘尘气溶胶微粒可把二氧化硫带到肺部使毒性增加3-4倍。若飘尘表面吸附金属微粒，在其催化作用下，使二氧化硫氧化为硫酸雾，其刺激作用比二氧化硫增强约1倍。长期生活在烟气污染的环境中，由于二氧化硫和飘尘的联合作用，可促使肺泡壁纤维增生，如果增生范围波及广泛，形成肺纤维性变，发展下去可使纤维断裂形成肺气肿。二氧化硫可以增强致癌物苯并（a）芘的致癌作用。据动物试验，在二氧化硫和苯并（a）芘的联合作用下，动物肺癌的发病率高于单个因子的发病率，在短期内即可诱发肺部扁平细胞癌。因此，二氧化硫具有促癌作用。
+                    </p>
+
+                </div>
+            </section>
+
+            <div class="column">
+                <div class="card  has-text-centered">
+                    <header class="card-header">
+
+                    </header>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <span class="is-underlined">參考資料:<a
+                href="http://www.szwandi.cn/news/3259#:~:text=1.%E4%BA%8C%E6%B0%A7%E5%8C%96%E7%A1%AB%E5%AF%B9%E4%BA%BA%E4%BD%93%E7%9A%84%E5%8D%B1%E5%AE%B3,%EF%BC%881%EF%BC%89%E4%BA%8C%E6%B0%A7%E5%8C%96%E7%A1%AB%E5%AF%B9%E4%BA%BA%E7%9A%84%E5%91%BC%E5%90%B8%E5%99%A8%E5%AE%98%E5%92%8C%E7%9C%BC%E8%86%9C%E5%85%B7%E6%9C%89%E5%88%BA%E6%BF%80%E4%BD%9C%E7%94%A8%EF%BC%8C%E9%95%BF%E6%9C%9F%E5%90%B8%E5%85%A5%E5%AF%B9%E5%91%BC%E5%90%B8%E7%B3%BB%E7%BB%9F%E3%80%81%E8%82%9D%E3%80%81%E8%82%BE%E3%80%81%E5%BF%83%E8%84%8F%E9%83%BD%E6%9C%89%E5%8D%B1%E5%AE%B3%E3%80%82%20%EF%BC%882%EF%BC%89%E4%BA%8C%E6%B0%A7%E5%8C%96%E7%A1%AB%E5%9C%A8%E4%B8%80%E5%AE%9A%E6%B5%93%E5%BA%A6%E4%B8%8B%E5%AF%B9%E5%91%BC%E5%90%B8%E9%81%93%EF%BC%8C%E7%89%B9%E5%88%AB%E6%98%AF%E5%AF%B9%E4%B8%8A%E5%91%BC%E5%90%B8%E9%81%93%E6%9C%89%E5%88%BA%E6%BF%80%E4%BD%9C%E7%94%A8%EF%BC%8C%E5%B9%B6%E5%8F%AF%E5%BD%B1%E5%93%8D%E5%91%BC%E5%90%B8%E5%8A%9F%E8%83%BD%E3%80%82"
+                target="_blank">二氧化硫的危害及防治措施</a>
+        </span>
+    </div>
+    </div>
+
+
+
+
+
+    <!-- <script src=" {{ url_for('static', filename='./js/index.js' ) }}">
+                    </script> -->
+
+    <script src="{{url_for('static',filename='./js/so2.js')}}"></script>
+    <script src="{{url_for('static',filename='./js/main.js')}}"></script>
+</body>
+
+</html>

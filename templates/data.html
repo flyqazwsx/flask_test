@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="1800">
-    <title>天氣預報</title>
+    <title>二氧化氮</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.0/echarts.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -15,15 +15,15 @@
 </head>
 
 <body onload="getTime()">
-    <div class="hero">
+    <div class="hero is-small is-warning">
         <div class="hero-body">
             <div class="columns is-vcentered">
                 <div class="column is-half">
-                    <p class="title is-2">
+                    <p class="title is-2 has-text-weight-bold">
                         空氣品質
                     </p>
 
-                    <p class="subtitle">
+                    <p class="subtitle has-text-weight-bold is-underlined">
                         資料來源:<a href="https://data.gov.tw/dataset/40448" target="_blank">政府資料開放平台</a><br>
                     </p>
                     <!-- <p>
@@ -32,12 +32,12 @@
 
 
                     </p>
-                    <p id="date">
-                        {{date}}
-                    </p>
-                    <form action="./data" class="form mt-2">
+                    <p class=" has-text-weight-bold" id="date">
 
-                        <p>資料更新時間:{{date}}</p>
+                    </p>
+                    <form action="./data" class="form mt-2 ">
+
+                        <p class=" has-text-weight-bold">資料更新時間:{{date}}</p>
                         <button class="button is-info is-medium">
 
                             更新資料
@@ -51,26 +51,58 @@
                 </div>
             </div>
 
+            <div class="column is-two-four">
+                <div class="box">
+                    <div id="data" style="width: 100%;height:400px;"></div>
+                </div>
+            </div>
+
+
             <section class="hero is-small is-primary">
                 <div class="hero-body">
-                    <p class="title is-1">
+                    <p class="title is-1 has-text-white">
                         二氧化氮
                     </p>
-                    <p class="subtitle is-4  has-text-justified">
-                        又稱為過氧化氮，是大π鍵結構的典型分子。大π鍵含有三個電子，其中兩個進入成鍵π軌道，
-                        一個進入反鍵π軌道。二氧化氮室溫下為紅棕色氣體，易溶於水且具有刺激性氣味。吸入二氧化氮
-                        可能對肺組織產生強烈的刺激作用和腐蝕作用。由於其結構的不穩定性，通常情況下與其二聚體形式——四氧化二氮(無色氣體)
-                        混合存在，構成一種平衡態混合物。二氧化氮轉化而四氧化二氮放熱。升高溫度，平衡向二氧化氮合成的方向移動；降低溫度，
-                        平衡向四氧化二氮合成的方向移動。
+                    <p class="subtitle is-4  has-text-justified has-text-black has-text-weight-bold">
+                        NO2是一種氮氧化物，氣味很濃，聞起來酸酸臭臭的，很刺鼻，如果溶於水的話，會形成具有強烈腐蝕性的「硝酸」，也是造成酸雨的原因之一。
                     </p>
-                    <p class="title is-3">
-                        健康危害：
+                    <p class="subtitle is-4  has-text-justified has-text-black has-text-weight-bold">
+                        NO2本身就對於人體具有一定的毒性，只要稍微吸到一點點，就會引發咳嗽、呼吸急促，或是噁心想吐、眼睛痠痛，同時會減少身體對於病菌的抵抗力。
+                        不過如果長期暴露的話，更會導致
+                        <small
+                            class="subtitle is-4  has-text-justified  has-text-weight-bold has-text-danger-dark">4種嚴重的疾病</small>。
                     </p>
-                    <p class="subtitle is-4 has-text-justified">
-                        氮氧化物主要損害呼吸道。吸入氣體初期僅有輕微的眼及上呼吸道刺激症状，如咽部不適、乾咳等。
-                        常經數小時至十幾小時或更長時間潛伏期後發生遲發性肺水腫、成人呼吸窘迫症候群，出現胸悶、呼吸窘迫、咳嗽、咯泡沫痰、紫紺等。
-                        可並發氣胸及縱隔氣腫。肺水腫消退後兩周左右可出現遲發性阻塞性細支氣管炎。慢性作用：主要表現為神經衷弱症候群及慢性呼吸道炎症。
-                        個別病例出現肺纖維化。可引起牙齒酸蝕症。
+                    <br>
+                    <p class="title is-3 has-text-white">
+                        黃斑部病變:
+
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-black has-text-weight-bold">
+                        以前都認為空汙對眼睛的影響，是「接觸」造成的過敏、乾眼症，但其實「透過呼吸道吸入」的空汙吸進身體裡後，會進入血液循環，而眼睛是血流非常豐沛的地方，尤其是黃斑部所在的位置，是血流匯集的地方，更容易被刺激而發生病變。
+                    </p>
+
+                    <p class="title is-3 has-text-white">
+                        糖尿病:
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-black has-text-weight-bold">
+                        O3（臭氧）、NOx（氮氧化物）及 SO2（二氧化硫）暴露濃度升高，那個地區的糖尿病就醫風險也隨之提高，會引起慢性糖尿病；而對於已經是糖尿病患者的人來說，同時也會傷害腎功能，導致尿蛋白增加。
+                        對於懷孕的婦女來說，也會增加她們罹患妊娠糖尿病的機率。
+                    </p>
+
+                    <p class="title is-3 has-text-white">
+                        氣喘:
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-black has-text-weight-bold">
+                        NO2濃度過高，會明顯造成氣喘急診量增加，也就是會使得氣喘患者急性發作，而且這些地區的濃度只有33 ppb，遠小於國家的小時標準值 250 ppb
+                        ，國衛院認為「如果以民眾的健康來計算的話，標準遠遠跟不上，建議要調降NO2的標準。」
+                        而NO2濃度過高，也會影響肺部功能，導致肺活量下降。
+                    </p>
+
+                    <p class="title is-3 has-text-white">
+                        胎兒心臟病:
+                    </p>
+                    <p class="subtitle is-4 has-text-justified has-text-black has-text-weight-bold">
+                        而在孕期第 3～8 周，正是胎兒在生長心血管的重要時刻，如果讓孕婦暴露到NO2，會增加肺動脈狹窄的風險，出生之後如果沒有進行治療，會變得越來越嚴重，血液無法準確輸送到寶寶的全身。
                     </p>
                 </div>
             </section>
@@ -87,13 +119,10 @@
 
         </div>
 
-        <div class="column is-two-four">
-            <div class="box">
-                <div id="data" style="width: 100%;height:400px;"></div>
-            </div>
 
-        </div>
-
+        <span class="is-underlined">參考資料:<a href="https://heho.com.tw/archives/57031"
+                target="_blank">https://heho.com.tw/archives/57031</a>
+        </span>
 
 
 
