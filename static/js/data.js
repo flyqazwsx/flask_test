@@ -1,5 +1,10 @@
 let chart = echarts.init(document.querySelector("#data"));
 
+let no2HighSitename = document.querySelector("#no2_high_sitename");
+let no2HighValue = document.querySelector("#no2_high_value");
+let no2LowSitename = document.querySelector("#no2_low_sitename");
+let no2LowValue = document.querySelector("#no2_low_value");
+
 
 $(document).ready(() => {
     data();
@@ -12,6 +17,27 @@ window.onresize = function () {
 };
 
 
+function renderMaxno2(data) {
+
+    let no2 = data["no2"];
+    let sitename = data["sitename"];
+    let maxValue = Math.max(...no2);
+    let maxIndex = no2.indexOf(maxValue);
+    let maxSitename = sitename[maxIndex];
+    let minValue = Math.min(...no2);
+    let minIndex = no2.indexOf(minValue);
+    let minSitename = sitename[minIndex];
+    console.log(maxSitename, maxValue);
+    console.log(minSitename, minValue);
+
+    no2HighSitename.innerText = maxSitename;
+    no2HighValue.innerText = maxValue;
+    no2LowSitename.innerText = minSitename;
+    no2LowValue.innerText = minValue;
+
+}
+
+
 function data() {
     chart.showLoading();
     $.ajax(
@@ -22,6 +48,7 @@ function data() {
             success: (data) => {
                 chart.hideLoading();
                 drawChart(data["sitename"], data["no2"], "二氧化氮", chart, "#8b008b");
+                renderMaxno2(data);
             },
             error: () => {
                 chart.hideLoading();

@@ -1,5 +1,11 @@
 let chart2 = echarts.init(document.querySelector("#so2"));
 
+
+let so2HighSitename = document.querySelector("#so2_high_sitename");
+let so2HighValue = document.querySelector("#so2_high_value");
+let so2LowSitename = document.querySelector("#so2_low_sitename");
+let so2LowValue = document.querySelector("#so2_low_value");
+
 $(document).ready(() => {
     so2();
 });
@@ -22,6 +28,7 @@ function so2() {
             success: (data) => {
                 chart2.hideLoading();
                 drawChart(data["sitename"], data["so2"], "二氧化硫", chart2, "#8b008b");
+                renderMaxso2(data);
             },
             error: () => {
                 chart2.hideLoading();
@@ -31,7 +38,25 @@ function so2() {
     );
 };
 
+function renderMaxso2(data) {
 
+    let so2 = data["so2"];
+    let sitename = data["sitename"];
+    let maxValue = Math.max(...so2);
+    let maxIndex = so2.indexOf(maxValue);
+    let maxSitename = sitename[maxIndex];
+    let minValue = Math.min(...so2);
+    let minIndex = so2.indexOf(minValue);
+    let minSitename = sitename[minIndex];
+    console.log(maxSitename, maxValue);
+    console.log(minSitename, minValue);
+
+    so2HighSitename.innerText = maxSitename;
+    so2HighValue.innerText = maxValue;
+    so2LowSitename.innerText = minSitename;
+    so2LowValue.innerText = minValue;
+
+}
 
 
 

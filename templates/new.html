@@ -24,8 +24,7 @@
                     </p>
 
                     <p class="subtitle">
-                        資料來源:<a href="https://data.gov.tw/dataset/34827" target="_blank"
-                            class="has-text-link">政府資料開放平台</a><br>
+                        資料來源:<a href="https://data.gov.tw/dataset/34827" target="_blank">政府資料開放平台</a><br>
                     </p>
                     <p id="date">
                         {{date}}
@@ -56,15 +55,15 @@
 
 
     </div>
-    <form action="/flask_test" method="POST"></form>
-    <select name="select_countys" id="select_countys">
-        {% for county in countys %}
-        <option value="{{county}}">{{county}}</option>
-        {% endfor %}
-    </select>
-    <input type="button" value="確定" id="county_btn" name="county_btn">
-    </form>
+    <form action="" method="POST">
+        <select name="select_county" id="select_county">
+            {% for county in countys %}
+            <option value="{{county}}">{{county}}</option>
+            {% endfor %}
+        </select>
 
+        <input type="submit" value="確定"></button>
+    </form>
     <!--表格-->
     <section>
 

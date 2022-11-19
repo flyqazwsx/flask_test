@@ -1,5 +1,10 @@
 let chart1 = echarts.init(document.querySelector("#pm25"));
 
+let pm25HighSitename = document.querySelector("#pm25_high_sitename");
+let pm25HighValue = document.querySelector("#pm25_high_value");
+let pm25LowSitename = document.querySelector("#pm25_low_sitename");
+let pm25LowValue = document.querySelector("#pm25_low_value");
+
 $(document).ready(() => {
     pm25();
 });
@@ -22,6 +27,7 @@ function pm25() {
             success: (data) => {
                 chart1.hideLoading();
                 drawChart(data["sitename"], data["pm25"], "細懸浮微粒", chart1, "#8b008b");
+                renderMaxpm25(data);
             },
             error: () => {
                 chart1.hideLoading();
@@ -32,6 +38,26 @@ function pm25() {
 };
 
 
+
+function renderMaxpm25(data) {
+
+    let pm25 = data["pm25"];
+    let sitename = data["sitename"];
+    let maxValue = Math.max(...pm25);
+    let maxIndex = pm25.indexOf(maxValue);
+    let maxSitename = sitename[maxIndex];
+    let minValue = Math.min(...pm25);
+    let minIndex = pm25.indexOf(minValue);
+    let minSitename = sitename[minIndex];
+    console.log(maxSitename, maxValue);
+    console.log(minSitename, minValue);
+
+    pm25HighSitename.innerText = maxSitename;
+    pm25HighValue.innerText = maxValue;
+    pm25LowSitename.innerText = minSitename;
+    pm25LowValue.innerText = minValue;
+
+}
 
 
 

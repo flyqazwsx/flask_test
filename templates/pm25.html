@@ -24,11 +24,10 @@
                     </p>
 
                     <p class="subtitle has-text-weight-bold">
-                        資料來源:<a href="https://data.gov.tw/dataset/40448" target="_blank">政府資料開放平台</a><br>
+                        資料來源:<a href="https://data.gov.tw/dataset/40448" target="_blank"
+                            class="has-text-link">政府資料開放平台</a><br>
                     </p>
-                    <!-- <p>
-                        資料更新時間:{{date}}
-                    </p> -->
+
 
 
                     </p>
@@ -49,74 +48,105 @@
                     </p>
 
                 </div>
+                <!-- ------------------------------------------------------- -->
+
+                <div class="column">
+                    <div class="card  has-text-centered">
+                        <header class="card-header">
+                            <p class="card-header-title is-size-2 is-centered has-background-danger has-text-white"
+                                id="pm25_high_sitename">
+                                N/A
+                            </p>
+                        </header>
+                        <div class="card-content is-size-2" id="pm25_high_value">
+                            0
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card  has-text-centered">
+                            <header class="card-header">
+                                <p class="card-header-title is-size-2 is-centered has-background-success has-text-white"
+                                    id="pm25_low_sitename">
+                                    N/A
+                                </p>
+                            </header>
+                            <div class="card-content is-size-2" id="pm25_low_value">
+                                0
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="column is-two-four">
-                <div class="box">
-                    <div id="pm25" style="width: 100%;height:400px;"></div>
-                </div>
-
-            </div>
+        </div>
+        <!-- -------------------------------------------------------- -->
 
 
-            <section class="hero is-small is-primary">
-                <div class="hero-body">
-                    <p class="title is-1 has-text-white">
-                        PM2.5
-                    </p>
-                    <p class="subtitle is-4  has-text-justified has-text-weight-bold">
-                        細懸浮微粒（PM2.5）會導致人體產生：癌症、呼吸道疾病、心血管疾病、中風、免疫功能低下、神經退化性疾病、
-                        肥胖與糖尿病、孩童學習記憶下降、過敏症狀、精子變小及有害孕婦及兒童發展等疾病。
-
-
-
-
-                    </p>
-
-                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
-                        PM2.5是透過兩種方式：呼吸道吸入及作為接觸過敏原兩種方式，前者直接影響我們從鼻腔到肺部，進而影響全身組織與器官
-                        ；後者讓我們的皮膚和眼睛一直會癢、極不舒服。
-
-
-                    </p>
-                    <br>
-                    <p class="title is-3 has-text-white">
-                        呼吸道吸入：
-                    </p>
-
-
-                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
-                        季節性霾害、汽機車或工廠排放的廢氣等，都是空氣污染的主要來源，其中富含PM2.5。由於它的粒徑極小，只要透過呼吸就可能吸入PM2.5汙染物。細懸浮微粒（PM2.5）會經由鼻腔、
-                        咽喉，進入氣管、細支氣管，再進入肺泡中作氣體交換。當PM2.5，進入肺泡被巨噬細胞吞噬，影響免疫功能；或是穿過肺泡，進入血液運送全身，影響全身組織與器官。
-                    </p>
-                    <br>
-                    <p class="title is-3 has-text-white">
-                        接觸過敏原：
-                    </p>
-
-                    <p class="subtitle is-4 has-text-justified has-text-weight-bold">
-                        近來皮膚過敏、眼睛不舒服的患者明顯增加，原來空氣汙染，不只對呼吸道造成影響，接觸空氣的皮膚與眼睛也會受髒空氣影響！大量PM2.5顆粒容易附著在皮膚表面，堵塞毛孔，除了加重痤瘡的發生外，也可能會作為過敏原，引起皮膚過敏或眼睛癢、乾澀、發紅等問題。
-                    </p>
-                </div>
-            </section>
-
-            <div class="column">
-                <div class="card  has-text-centered">
-                    <header class="card-header">
-
-                    </header>
-
-                </div>
-
+        <div class="column is-two-four">
+            <div class="box">
+                <div id="pm25" style="width: 100%;height:400px;"></div>
             </div>
 
         </div>
 
 
+        <section class="hero is-small is-primary">
+            <div class="hero-body">
+                <p class="title is-1 has-text-white">
+                    PM2.5
+                </p>
+                <p class="subtitle is-4  has-text-justified has-text-weight-bold">
+                    細懸浮微粒（PM2.5）會導致人體產生：癌症、呼吸道疾病、心血管疾病、中風、免疫功能低下、神經退化性疾病、
+                    肥胖與糖尿病、孩童學習記憶下降、過敏症狀、精子變小及有害孕婦及兒童發展等疾病。
 
-        <span class="is-underlined">參考資料:<a href="https://heho.com.tw/archives/3499"
-                target="_blank">https://heho.com.tw/archives/3499</a>
-        </span>
+
+
+
+                </p>
+
+                <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                    PM2.5是透過兩種方式：呼吸道吸入及作為接觸過敏原兩種方式，前者直接影響我們從鼻腔到肺部，進而影響全身組織與器官
+                    ；後者讓我們的皮膚和眼睛一直會癢、極不舒服。
+
+
+                </p>
+                <br>
+                <p class="title is-3 has-text-white">
+                    呼吸道吸入：
+                </p>
+
+
+                <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                    季節性霾害、汽機車或工廠排放的廢氣等，都是空氣污染的主要來源，其中富含PM2.5。由於它的粒徑極小，只要透過呼吸就可能吸入PM2.5汙染物。細懸浮微粒（PM2.5）會經由鼻腔、
+                    咽喉，進入氣管、細支氣管，再進入肺泡中作氣體交換。當PM2.5，進入肺泡被巨噬細胞吞噬，影響免疫功能；或是穿過肺泡，進入血液運送全身，影響全身組織與器官。
+                </p>
+                <br>
+                <p class="title is-3 has-text-white">
+                    接觸過敏原：
+                </p>
+
+                <p class="subtitle is-4 has-text-justified has-text-weight-bold">
+                    近來皮膚過敏、眼睛不舒服的患者明顯增加，原來空氣汙染，不只對呼吸道造成影響，接觸空氣的皮膚與眼睛也會受髒空氣影響！大量PM2.5顆粒容易附著在皮膚表面，堵塞毛孔，除了加重痤瘡的發生外，也可能會作為過敏原，引起皮膚過敏或眼睛癢、乾澀、發紅等問題。
+                </p>
+            </div>
+        </section>
+
+        <div class="column">
+            <div class="card  has-text-centered">
+                <header class="card-header">
+
+                </header>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <span class="is-underlined">參考資料:<a href="https://heho.com.tw/archives/3499"
+            target="_blank">https://heho.com.tw/archives/3499</a>
+    </span>
     </div>
     </div>
 
